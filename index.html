@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shashwat Prajapati - Portfolio</title>
+  <title>Abhishek Dharsandiya - Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* Base Styles */
@@ -147,11 +147,11 @@
       background-position: center;
       cursor: pointer;
       position: relative;
-      display: none; /* Hidden by default when video is playing */
+      display: block; /* Show thumbnail by default */
     }
 
-    .video-thumbnail.active {
-      display: block; /* Show when no video is playing */
+    .video-thumbnail.hidden {
+      display: none; /* Hide when video is playing */
     }
 
     .video-thumbnail::after {
@@ -1031,7 +1031,7 @@
 <body>
   <!-- Main Navbar -->
   <nav class="navbar" id="main-navbar">
-    <div class="logo">Shashwat <span>Prajapati</span></div>
+    <div class="logo">Abhishek <span>Dharsandiya</span></div>
     <ul>
       <li><a href="#" id="about-link">About Me</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -1042,7 +1042,7 @@
 
   <!-- About Page Navbar -->
   <nav class="about-nav" id="about-navbar">
-    <div class="logo">Shashwat <span>Prajapati</span></div>
+    <div class="logo">Abhishek <span>Dharsandiya</span></div>
     <ul>
       <li><a href="#" id="home-link">Home</a></li>
       <li><a href="#" class="active">About</a></li>
@@ -1056,7 +1056,7 @@
   <div id="main-content">
     <!-- Hero Section -->
     <section class="hero">
-      <h1 class="glow-text">Hi, I'm Shashwat</h1>
+      <h1 class="glow-text">Hi, I'm Abhishek</h1>
       <h2><span id="typing"></span></h2>
     </section>
 
@@ -1064,7 +1064,7 @@
     <section class="showreel">
       <h2 class="section-title">Edit Showreel</h2>
       <div class="video-container">
-        <div class="video-thumbnail active" style="background-image: url('https://img.youtube.com/vi/3JZ_D3ELwOQ/maxresdefault.jpg')" onclick="playVideo('showreel', '3JZ_D3ELwOQ')">
+        <div class="video-thumbnail" id="showreelThumbnail">
           <div class="play-button">
             <i class="fas fa-play"></i>
           </div>
@@ -1075,7 +1075,7 @@
             <button class="action-btn"><i class="far fa-clock"></i> Watch Later</button>
             <button class="action-btn"><i class="fas fa-share-alt"></i> Share</button>
           </div>
-          <button class="action-btn watch-btn" onclick="playVideo('showreel', '3JZ_D3ELwOQ')"><i class="fab fa-youtube"></i> Play Video</button>
+          <button class="action-btn watch-btn" id="showreelPlayBtn"><i class="fab fa-youtube"></i> Play Video</button>
         </div>
       </div>
     </section>
@@ -1085,78 +1085,20 @@
       <h2 class="section-title">YouTube Projects</h2>
       
       <div class="projects-container">
-        <div class="video-thumbnails">
-          <div class="thumbnail active" data-video="3JZ_D3ELwOQ" data-title="Big Buck Bunny Animation" data-channel="Blender Foundation" data-savings="75% SAVINGS RATE">
-            <div class="thumbnail-img" style="background-image: url('https://img.youtube.com/vi/3JZ_D3ELwOQ/maxresdefault.jpg')">
-              <div class="play-icon">
-                <i class="fas fa-play" style="color: white; font-size: 12px;"></i>
-              </div>
-            </div>
-            <div class="thumbnail-info">
-              <div class="thumbnail-title">Big Buck Bunny Animation</div>
-              <div class="thumbnail-channel">Blender Foundation</div>
-            </div>
-          </div>
-          
-          <div class="thumbnail" data-video="LXb3EKWsInQ" data-title="Sintel - Animated Short Film" data-channel="Blender Foundation" data-savings="60% GROWTH RATE">
-            <div class="thumbnail-img" style="background-image: url('https://img.youtube.com/vi/LXb3EKWsInQ/maxresdefault.jpg')">
-              <div class="play-icon">
-                <i class="fas fa-play" style="color: white; font-size: 12px;"></i>
-              </div>
-            </div>
-            <div class="thumbnail-info">
-              <div class="thumbnail-title">Sintel - Animated Short Film</div>
-              <div class="thumbnail-channel">Blender Foundation</div>
-            </div>
-          </div>
-          
-          <div class="thumbnail" data-video="yPYZpwSpKmA" data-title="Waking Life - Animation Sequence" data-channel="Film Excerpt" data-savings="80% ENGAGEMENT">
-            <div class="thumbnail-img" style="background-image: url('https://img.youtube.com/vi/yPYZpwSpKmA/maxresdefault.jpg')">
-              <div class="play-icon">
-                <i class="fas fa-play" style="color: white; font-size: 12px;"></i>
-              </div>
-            </div>
-            <div class="thumbnail-info">
-              <div class="thumbnail-title">Waking Life - Animation Sequence</div>
-              <div class="thumbnail-channel">Film Excerpt</div>
-            </div>
-          </div>
-          
-          <div class="thumbnail" data-video="W0LHTWG-UmQ" data-title="Cosmos Laundromat - Animated Short" data-channel="Blender Foundation" data-savings="70% CONVERSION">
-            <div class="thumbnail-img" style="background-image: url('https://img.youtube.com/vi/W0LHTWG-UmQ/maxresdefault.jpg')">
-              <div class="play-icon">
-                <i class="fas fa-play" style="color: white; font-size: 12px;"></i>
-              </div>
-            </div>
-            <div class="thumbnail-info">
-              <div class="thumbnail-title">Cosmos Laundromat - Animated Short</div>
-              <div class="thumbnail-channel">Blender Foundation</div>
-            </div>
-          </div>
-          
-          <div class="thumbnail" data-video="R_kB2FH1e_c" data-title="Animation Showcase Reel" data-channel="Creative Studio" data-savings="65% RETENTION">
-            <div class="thumbnail-img" style="background-image: url('https://img.youtube.com/vi/R_kB2FH1e_c/maxresdefault.jpg')">
-              <div class="play-icon">
-                <i class="fas fa-play" style="color: white; font-size: 12px;"></i>
-              </div>
-            </div>
-            <div class="thumbnail-info">
-              <div class="thumbnail-title">Animation Showcase Reel</div>
-              <div class="thumbnail-channel">Creative Studio</div>
-            </div>
-          </div>
+        <div class="video-thumbnails" id="projectsThumbnails">
+          <!-- Thumbnails will be generated by JavaScript -->
         </div>
         
         <div class="video-details">
           <!-- Video Player for Projects -->
           <div class="project-video-container">
-            <iframe class="project-video-player" id="projectVideo" src="https://www.youtube.com/embed/3JZ_D3ELwOQ?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="project-video-player" id="projectVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           
-          <h3 class="project-title">Big Buck Bunny Animation</h3>
+          <h3 class="project-title" id="projectTitle">Project Title</h3>
           <div class="project-meta">
-            <span class="project-channel">Blender Foundation</span>
-            <span class="project-savings">75% SAVINGS RATE</span>
+            <span class="project-channel" id="projectChannel">Channel Name</span>
+            <span class="project-savings" id="projectSavings">75% SAVINGS RATE</span>
           </div>
           
           <div class="project-stats">
@@ -1181,7 +1123,7 @@
           </ul>
           
           <div class="project-actions">
-            <button class="action-btn watch-btn" onclick="openInYouTube('3JZ_D3ELwOQ')"><i class="fab fa-youtube"></i> Watch on YouTube</button>
+            <button class="action-btn watch-btn" id="projectYoutubeBtn"><i class="fab fa-youtube"></i> Watch on YouTube</button>
             <button class="action-btn"><i class="fas fa-share-alt"></i> Share</button>
           </div>
         </div>
@@ -1196,25 +1138,7 @@
         <button class="arrow left" onclick="scrollShortsLeft()">◀</button>
 
         <div class="carousel" id="shorts-carousel">
-          <div class="short-card">
-            <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-
-          <div class="short-card">
-            <iframe src="https://www.youtube.com/embed/LXb3EKWsInQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-
-          <div class="short-card">
-            <iframe src="https://www.youtube.com/embed/yPYZpwSpKmA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          
-          <div class="short-card">
-            <iframe src="https://www.youtube.com/embed/W0LHTWG-UmQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          
-          <div class="short-card">
-            <iframe src="https://www.youtube.com/embed/R_kB2FH1e_c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
+          <!-- Shorts will be generated by JavaScript -->
         </div>
 
         <button class="arrow right" onclick="scrollShortsRight()">▶</button>
@@ -1333,7 +1257,7 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-left">
-          <div class="footer-name">Shashwat Prajapati</div>
+          <div class="footer-name">Abhishek Dharsandiya</div>
         </div>
 
         <div class="footer-right">
@@ -1359,11 +1283,11 @@
       </div>
 
       <div class="about-text">
-        <h1 class="title">Shashwat Prajapati</h1>
+        <h1 class="title">Abhishek Dharsandiya</h1>
         <p class="intro"><strong>Hey! Thank you for visiting the website.</strong></p>
 
         <div class="bio">
-          <p>Hi, I'm Shashwat, a Smart, Creative, and Detail-Driven Video Editor based in India.</p>
+          <p>Hi, I'm Abhishek, a Smart, Creative, and Detail-Driven Video Editor based in India.</p>
 
           <p>I've been crafting videos since <strong>2016</strong>, and my passion for storytelling through visuals has only grown stronger with time.</p>
 
@@ -1385,22 +1309,158 @@
   </div>
 
   <script>
-    // Video Play Functionality
+    // =============================================
+    // ONLY CHANGE THESE VIDEO IDs - EVERYTHING ELSE IS AUTOMATIC
+    // =============================================
+    
+    const videoConfig = {
+      // Showreel Video (Main showcase video)
+      showreel: "3sZnaoAF0Bw",
+      
+      // YouTube Projects (5 videos for the projects section)
+      projects: [
+        "s7H9hyopPGE",
+        "joGa20fAngo", 
+        "yrFFp7oBFqY",
+        "vfjI7u4D2fc",
+        "0C8wasc-J-Q"
+      ],
+      
+      // Shorts Videos (5 YouTube Shorts)
+      shorts: [
+        "AhhCLSUmaQQ",
+        "8Ffy4vveELc",
+        "AhhCLSUmaQQ",
+        "BklgajsMm9k", 
+        "0lF9vdT8JhI"
+      ]
+    };
+
+    // =============================================
+    // NO NEED TO CHANGE ANYTHING BELOW THIS LINE
+    // =============================================
+
+    // Video data with titles and channels
+    const videoData = {
+      showreel: {
+        title: "Professional Video Edit",
+        channel: "Abhishek Dharsandiya"
+      },
+      projects: [
+        { title: "Big Buck Bunny Animation", channel: "Blender Foundation", savings: "75% SAVINGS RATE" },
+        { title: "Sintel - Animated Short Film", channel: "Blender Foundation", savings: "60% GROWTH RATE" },
+        { title: "Waking Life - Animation Sequence", channel: "Film Excerpt", savings: "80% ENGAGEMENT" },
+        { title: "Cosmos Laundromat - Animated Short", channel: "Blender Foundation", savings: "70% CONVERSION" },
+        { title: "Animation Showcase Reel", channel: "Creative Studio", savings: "65% RETENTION" }
+      ]
+    };
+
+    // Initialize everything when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeShowreel();
+      initializeProjects();
+      initializeShorts();
+      initializeTypingEffect();
+      setupEventListeners();
+    });
+
+    function initializeShowreel() {
+      const thumbnail = document.getElementById('showreelThumbnail');
+      const playBtn = document.getElementById('showreelPlayBtn');
+      
+      // Set thumbnail background
+      thumbnail.style.backgroundImage = `url('https://img.youtube.com/vi/${videoConfig.showreel}/maxresdefault.jpg')`;
+      
+      // Set click events
+      thumbnail.onclick = () => playVideo('showreel', videoConfig.showreel);
+      playBtn.onclick = () => playVideo('showreel', videoConfig.showreel);
+    }
+
+    function initializeProjects() {
+      const container = document.getElementById('projectsThumbnails');
+      const projectVideo = document.getElementById('projectVideo');
+      const projectTitle = document.getElementById('projectTitle');
+      const projectChannel = document.getElementById('projectChannel');
+      const projectSavings = document.getElementById('projectSavings');
+      const youtubeBtn = document.getElementById('projectYoutubeBtn');
+      
+      // Clear container
+      container.innerHTML = '';
+      
+      // Create thumbnails
+      videoConfig.projects.forEach((videoId, index) => {
+        const data = videoData.projects[index];
+        const thumbnail = document.createElement('div');
+        thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+        thumbnail.innerHTML = `
+          <div class="thumbnail-img" style="background-image: url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg')">
+            <div class="play-icon">
+              <i class="fas fa-play" style="color: white; font-size: 12px;"></i>
+            </div>
+          </div>
+          <div class="thumbnail-info">
+            <div class="thumbnail-title">${data.title}</div>
+            <div class="thumbnail-channel">${data.channel}</div>
+          </div>
+        `;
+        
+        thumbnail.onclick = () => {
+          // Update active state
+          document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+          thumbnail.classList.add('active');
+          
+          // Update video and details
+          projectVideo.src = `https://www.youtube.com/embed/${videoId}`;
+          projectTitle.textContent = data.title;
+          projectChannel.textContent = data.channel;
+          projectSavings.textContent = data.savings;
+          youtubeBtn.onclick = () => openInYouTube(videoId);
+        };
+        
+        container.appendChild(thumbnail);
+      });
+      
+      // Set initial video
+      if (videoConfig.projects.length > 0) {
+        projectVideo.src = `https://www.youtube.com/embed/${videoConfig.projects[0]}`;
+        projectTitle.textContent = videoData.projects[0].title;
+        projectChannel.textContent = videoData.projects[0].channel;
+        projectSavings.textContent = videoData.projects[0].savings;
+        youtubeBtn.onclick = () => openInYouTube(videoConfig.projects[0]);
+      }
+    }
+
+    function initializeShorts() {
+      const container = document.getElementById('shorts-carousel');
+      
+      // Clear container
+      container.innerHTML = '';
+      
+      // Create short cards
+      videoConfig.shorts.forEach(videoId => {
+        const shortCard = document.createElement('div');
+        shortCard.className = 'short-card';
+        shortCard.innerHTML = `
+          <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        `;
+        container.appendChild(shortCard);
+      });
+    }
+
     function playVideo(containerId, videoId) {
       const container = document.querySelector(`#${containerId}Video`);
       const thumbnail = document.querySelector(`#${containerId}Video`).previousElementSibling;
       
-      container.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      container.src = `https://www.youtube.com/embed/${videoId}`;
       container.classList.add('active');
-      thumbnail.classList.remove('active');
+      thumbnail.classList.add('hidden');
     }
 
     function openInYouTube(videoId) {
       window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
     }
 
-    // Typing Effect
-    document.addEventListener('DOMContentLoaded', function () {
+    function initializeTypingEffect() {
       const typingSpan = document.getElementById('typing');
       if (typingSpan) {
         const text = ["Video Editor", "Content Creator", "Post Production Expert"];
@@ -1429,48 +1489,18 @@
 
         type();
       }
+    }
 
-      // YouTube Projects Thumbnail Selection
-      const thumbnails = document.querySelectorAll('.thumbnail');
-      const projectTitle = document.querySelector('.project-title');
-      const projectChannel = document.querySelector('.project-channel');
-      const projectSavings = document.querySelector('.project-savings');
-      const projectVideo = document.getElementById('projectVideo');
-      
-      thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-          // Remove active class from all thumbnails
-          thumbnails.forEach(t => t.classList.remove('active'));
-          
-          // Add active class to clicked thumbnail
-          this.classList.add('active');
-          
-          // Update project details
-          projectTitle.textContent = this.getAttribute('data-title');
-          projectChannel.textContent = this.getAttribute('data-channel');
-          projectSavings.textContent = this.getAttribute('data-savings');
-          
-          // Play video directly in the container
-          const videoId = this.getAttribute('data-video');
-          projectVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-        });
-      });
-
+    function setupEventListeners() {
       // Shorts Carousel
       const shortsCarousel = document.getElementById('shorts-carousel');
-      
-      window.scrollShortsLeft = function () {
-        shortsCarousel.scrollBy({ left: -320, behavior: 'smooth' });
-      };
-      
-      window.scrollShortsRight = function () {
-        shortsCarousel.scrollBy({ left: 320, behavior: 'smooth' });
-      };
+      window.scrollShortsLeft = () => shortsCarousel.scrollBy({ left: -320, behavior: 'smooth' });
+      window.scrollShortsRight = () => shortsCarousel.scrollBy({ left: 320, behavior: 'smooth' });
 
-      // Contact Form Handler
+      // Contact Form
       const contactForm = document.getElementById('contactForm');
       if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
+        contactForm.addEventListener('submit', function(e) {
           e.preventDefault();
           alert('Thanks! Your message has been sent — I will get back to you soon.');
           this.reset();
@@ -1485,7 +1515,6 @@
       const homeLink = document.getElementById('home-link');
       const aboutLink = document.getElementById('about-link');
       
-      // Show About Page
       aboutLink.addEventListener('click', function(e) {
         e.preventDefault();
         mainNavbar.style.display = 'none';
@@ -1495,7 +1524,6 @@
         window.scrollTo(0, 0);
       });
       
-      // Show Home Page
       homeLink.addEventListener('click', function(e) {
         e.preventDefault();
         mainNavbar.style.display = 'flex';
@@ -1505,25 +1533,20 @@
         window.scrollTo(0, 0);
       });
       
-      // Navigation from About Page to Sections
       document.addEventListener('click', function(e) {
         if (e.target.matches('[data-target]')) {
           e.preventDefault();
           const targetSection = e.target.getAttribute('data-target');
-          
-          // Switch to main content
           mainNavbar.style.display = 'flex';
           aboutNavbar.style.display = 'none';
           mainContent.style.display = 'block';
           aboutPage.style.display = 'none';
-          
-          // Scroll to target section
           setTimeout(() => {
             document.getElementById(targetSection).scrollIntoView({ behavior: 'smooth' });
           }, 100);
         }
       });
-    });
+    }
   </script>
 </body>
 </html>
