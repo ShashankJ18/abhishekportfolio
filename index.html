@@ -639,87 +639,31 @@
 
     .contact-inner {
       display: grid;
-      grid-template-columns: 1fr 420px;
+      grid-template-columns: 1fr 1fr;
       gap: 48px;
       align-items: start;
     }
 
-    /* form */
-    .contact-form {
-      background: transparent;
-      padding: 0;
-    }
-
-    .field-row {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 16px;
-    }
-
-    .field-row label {
-      color: #bfc7cf;
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
-    .contact-form input, .contact-form textarea, .contact-form select {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 12px 14px;
-      border-radius: 10px;
-      outline: none;
-      color: #e6eef7;
-      font-size: 15px;
-    }
-
-    .contact-form input::placeholder, .contact-form textarea::placeholder {
-      color: rgba(255,255,255,0.4);
-    }
-
-    /* phone row */
-    .phone-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .country-select {
-      width: 36%;
-      min-width: 120px;
-    }
-
-    .phone-row input {
-      flex: 1;
-    }
-
-    /* send */
-    .btn-send {
-      background: var(--accent);
-      color: #000;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 6px;
-      transition: transform var(--transition);
-    }
-
-    .btn-send:hover {
-      transform: translateY(-3px);
-    }
-
-    /* contact info */
     .contact-info-col {
-      padding-left: 26px;
-      border-left: 2px solid rgba(255,255,255,0.06);
+      padding: 30px;
+      background: var(--panel);
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .contact-info-col:hover {
+      transform: translateY(-5px);
     }
 
     .contact-heading {
       color: var(--accent);
-      font-size: 20px;
-      margin-bottom: 8px;
+      font-size: 28px;
+      margin-bottom: 24px;
       font-weight: 800;
+      text-align: center;
     }
 
     .contact-divider {
@@ -728,34 +672,72 @@
 
     .info-label {
       color: rgba(255,255,255,0.6);
-      margin-top: 10px;
-      font-size: 13px;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      display: block;
     }
 
     .info-link {
       display: inline-block;
-      color: #ffffff;
-      text-decoration: underline;
-      margin: 8px 0;
+      color: var(--accent);
+      text-decoration: none;
+      margin: 10px 0;
+      font-weight: 600;
+      font-size: 18px;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .info-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .info-link:hover::after {
+      width: 100%;
+    }
+
+    .info-link:hover {
+      color: #ffdf40;
     }
 
     .info-text {
-      margin: 8px 0 14px;
+      margin: 10px 0 16px;
       color: #cbd5e1;
       font-weight: 600;
+      font-size: 18px;
+    }
+
+    .socials {
+      margin-top: 30px;
+      text-align: center;
     }
 
     .socials a {
-      color: #cbd5e1;
+      color: var(--accent);
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.3s ease;
+      margin: 0 12px;
+      font-size: 18px;
+    }
+
+    .socials a:hover {
+      color: #ffdf40;
     }
 
     /* Footer */
     .site-footer {
       margin-top: 60px;
       padding: 18px 28px 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
       color: var(--muted);
       position: relative;
       z-index: 10;
@@ -980,12 +962,6 @@
       .contact-inner {
         grid-template-columns: 1fr;
         padding: 0 18px;
-      }
-      
-      .contact-info-col {
-        border-left: none;
-        padding-left: 0;
-        margin-top: 26px;
       }
       
       .clients-grid {
@@ -1269,59 +1245,40 @@
     <!-- Contact Section -->
     <section id="contact" class="section-contact">
       <div class="contact-inner">
-        <div class="contact-form-col">
-          <form id="contactForm" class="contact-form">
-            <div class="field-row">
-              <label>First Name</label>
-              <input type="text" name="firstName" placeholder="Enter first name" required>
-            </div>
-
-            <div class="field-row">
-              <label>Last Name</label>
-              <input type="text" name="lastName" placeholder="Enter last name">
-            </div>
-
-            <div class="field-row">
-              <label>Email Address</label>
-              <input type="email" name="email" placeholder="Enter email address" required>
-            </div>
-
-            <div class="field-row">
-              <label>Instagram ID</label>
-              <input type="text" name="instagram" placeholder="Enter Instagram ID">
-            </div>
-
-            <div class="field-row phone-row">
-              <label>Phone Number</label>
-              <select name="countryCode" class="country-select">
-                <option value="+91">+91 - India</option>
-                <option value="+1">+1 - USA</option>
-              </select>
-              <input type="tel" name="phone" placeholder="12345 67890">
-            </div>
-
-            <div class="field-row">
-              <label>Message</label>
-              <textarea name="message" rows="4" placeholder="Write a short message..."></textarea>
-            </div>
-
-            <button type="submit" class="btn-send">Send Message</button>
-          </form>
-        </div>
-
         <div class="contact-info-col">
-          <h3 class="contact-heading">CONTACT ME</h3>
-          <div class="contact-divider"></div>
-
-          <p class="info-label">DROP A MAIL AT:</p>
+          <h3 class="contact-heading">GET IN TOUCH</h3>
+          
+          <span class="info-label">DROP A MAIL AT:</span>
           <a class="info-link" href="mailto:shashwat.massmedia@gmail.com">shashwat.massmedia@gmail.com</a>
 
-          <p class="info-label">PHONE NUMBERS:</p>
+          <span class="info-label">PHONE NUMBER:</span>
           <p class="info-text">+91 9131571484</p>
 
-          <p class="info-label">FOLLOW:</p>
+          <span class="info-label">LOCATION:</span>
+          <p class="info-text">India</p>
+
           <div class="socials">
-            <a href="#" aria-label="instagram">Instagram</a> • <a href="#">YouTube</a>
+            <a href="#" aria-label="instagram">Instagram</a> • 
+            <a href="#">YouTube</a> • 
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+        
+        <div class="contact-info-col">
+          <h3 class="contact-heading">AVAILABILITY</h3>
+          
+          <span class="info-label">STATUS:</span>
+          <p class="info-text">Available for new projects</p>
+
+          <span class="info-label">RESPONSE TIME:</span>
+          <p class="info-text">Within 24 hours</p>
+
+          <span class="info-label">PREFERRED CONTACT:</span>
+          <p class="info-text">Email or Instagram DM</p>
+
+          <div class="socials" style="margin-top: 40px;">
+            <p style="color: var(--muted); font-size: 16px; margin-bottom: 16px;">Let's create something amazing together!</p>
+            <a href="mailto:shashwat.massmedia@gmail.com" class="btn-primary" style="display: inline-block; text-decoration: none;">Send Email</a>
           </div>
         </div>
       </div>
@@ -1433,7 +1390,7 @@
     let mouseX = 0;
     let mouseY = 0;
     let cameraElements = [];
-    const REPULSION_RADIUS = 60; // Distance at which icons start repelling
+    const REPULSION_RADIUS = 70; // Distance at which icons start repelling
     const REPULSION_FORCE = 8; // Strength of repulsion effect
 
     // Initialize everything when page loads
@@ -1579,16 +1536,6 @@
       const shortsCarousel = document.getElementById('shorts-carousel');
       window.scrollShortsLeft = () => shortsCarousel.scrollBy({ left: -320, behavior: 'smooth' });
       window.scrollShortsRight = () => shortsCarousel.scrollBy({ left: 320, behavior: 'smooth' });
-
-      // Contact Form
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          alert('Thanks! Your message has been sent — I will get back to you soon.');
-          this.reset();
-        });
-      }
 
       // Page Navigation
       const mainNavbar = document.getElementById('main-navbar');
@@ -1744,4 +1691,3 @@
   </script>
 </body>
 </html>
-
