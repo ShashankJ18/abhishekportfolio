@@ -46,6 +46,40 @@
       height: auto;
     }
 
+    /* Floating camera icons - FIXED */
+    #floating-cameras {
+      position: fixed;
+      inset: 0;
+      z-index: 1; /* Changed from -1 to 1 to appear above background but below content */
+      pointer-events: none;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .fcam {
+      position: absolute;
+      display: inline-grid;
+      place-items: center;
+      color: rgba(247,211,0,0.25); /* Increased opacity for better visibility */
+      opacity: 0.25; /* Increased base opacity */
+      will-change: transform, opacity;
+      -webkit-font-smoothing: antialiased;
+      transform-origin: center;
+      pointer-events: none;
+      text-shadow: 0 0 10px rgba(247,211,0,0.3); /* Added glow effect */
+    }
+
+    .fcam i {
+      display: block;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
+    }
+
+    /* Make sure content has higher z-index */
+    .navbar, .about-nav, #main-content, #about-page {
+      position: relative;
+      z-index: 10; /* Higher than floating cameras */
+    }
+
     /* Navbar */
     .navbar {
       width: 100%;
@@ -95,6 +129,8 @@
     .hero {
       text-align: center;
       padding: 180px 20px 60px;
+      position: relative;
+      z-index: 10;
     }
 
     .glow-text {
@@ -122,6 +158,8 @@
       display: inline-block;
       border-radius: 10px;
       font-weight: 800;
+      position: relative;
+      z-index: 10;
     }
 
     /* Showreel Section */
@@ -129,6 +167,8 @@
       padding: 40px 20px;
       max-width: var(--max-width);
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
 
     .video-container {
@@ -147,11 +187,11 @@
       background-position: center;
       cursor: pointer;
       position: relative;
-      display: block; /* Show thumbnail by default */
+      display: block;
     }
 
     .video-thumbnail.hidden {
-      display: none; /* Hide when video is playing */
+      display: none;
     }
 
     .video-thumbnail::after {
@@ -196,11 +236,11 @@
       width: 100%;
       height: 450px;
       border: 0;
-      display: none; /* Hidden by default */
+      display: none;
     }
 
     .video-player.active {
-      display: block; /* Show when video is playing */
+      display: block;
     }
 
     .video-actions {
@@ -248,6 +288,8 @@
       padding: 60px 20px;
       max-width: var(--max-width);
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
     
     .projects-container {
@@ -462,6 +504,8 @@
       padding: 60px 20px;
       max-width: var(--max-width);
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
 
     .carousel-container {
@@ -532,6 +576,7 @@
       position: relative;
       max-width: var(--max-width);
       margin: 0 auto;
+      z-index: 10;
     }
 
     .clients-grid {
@@ -587,6 +632,8 @@
       color: #fff;
       max-width: var(--max-width);
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
 
     .contact-inner {
@@ -709,6 +756,8 @@
       padding: 18px 28px 28px;
       background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
       color: var(--muted);
+      position: relative;
+      z-index: 10;
     }
 
     .footer-inner {
@@ -765,6 +814,8 @@
       max-width: var(--max-width);
       margin: 0 auto;
       display: none;
+      position: relative;
+      z-index: 10;
     }
 
     .about-card {
@@ -889,6 +940,19 @@
     .about-nav a.active {
       color: var(--accent);
       font-weight: 800;
+    }
+
+    /* Animations */
+    @keyframes floatY {
+      0%   { transform: translateY(0) rotate(0deg); }
+      50%  { transform: translateY(-18px) rotate(6deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    @keyframes swayX {
+      0%   { transform: translateX(0); }
+      50%  { transform: translateX(10px); }
+      100% { transform: translateX(0); }
     }
 
     /* Responsive Design */
@@ -1024,56 +1088,19 @@
       .project-video-container {
         height: 200px;
       }
+      
+      /* Mobile-specific floating cameras */
+      .fcam {
+        font-size: 20px !important;
+        opacity: 0.3 !important; /* More visible on mobile */
+      }
     }
-
-    /* Floating camera icons */
-#floating-cameras {
-  position: fixed;
-  inset: 0;
-  z-index: -1;                 /* sit behind UI (matches your particles approach) */
-  pointer-events: none;        /* don't block clicks */
-  overflow: hidden;
-}
-
-/* single floating icon wrapper */
-.fcam {
-  position: absolute;
-  display: inline-grid;
-  place-items: center;
-  color: rgba(247,211,0,0.90); /* accent color */
-  opacity: 0.9;
-  will-change: transform, opacity;
-  -webkit-font-smoothing: antialiased;
-  transform-origin: center;
-  pointer-events: none;
-}
-
-/* icon shape and subtle glass look */
-.fcam i {
-  display: block;
-  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
-}
-
-/* vertical float animation (up-down) */
-@keyframes floatY {
-  0%   { transform: translateY(0) rotate(0deg); }
-  50%  { transform: translateY(-18px) rotate(6deg); }
-  100% { transform: translateY(0) rotate(0deg); }
-}
-
-/* horizontal sway to avoid strictly vertical motion */
-@keyframes swayX {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(10px); }
-  100% { transform: translateX(0); }
-}
-
   </style>
 </head>
 
 <body>
   <!-- Floating camera icons background -->
-<div id="floating-cameras" aria-hidden="true"></div>
+  <div id="floating-cameras" aria-hidden="true"></div>
 
   <!-- Main Navbar -->
   <nav class="navbar" id="main-navbar">
@@ -1408,6 +1435,7 @@
       initializeShorts();
       initializeTypingEffect();
       setupEventListeners();
+      createFloatingCameras(); // Initialize floating cameras
     });
 
     function initializeShowreel() {
@@ -1593,55 +1621,62 @@
         }
       });
     }
+
     // create 30 floating camera icons
-(function createFloatingCameras() {
-  const count = 30;
-  const container = document.getElementById('floating-cameras');
-  if (!container) return;
+    function createFloatingCameras() {
+      const count = 30;
+      const container = document.getElementById('floating-cameras');
+      if (!container) return;
 
-  for (let i = 0; i < count; i++) {
-    const el = document.createElement('div');
-    el.className = 'fcam';
-    // random size between 18 and 56px
-    const size = Math.round(18 + Math.random() * 38);
-    el.style.fontSize = size + 'px';
+      // Clear any existing icons
+      container.innerHTML = '';
 
-    // random initial position
-    const left = Math.random() * 100;  // percent
-    const top  = Math.random() * 100;  // percent
-    el.style.left = left + '%';
-    el.style.top  = top + '%';
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement('div');
+        el.className = 'fcam';
+        // random size between 18 and 56px
+        const size = Math.round(18 + Math.random() * 38);
+        el.style.fontSize = size + 'px';
 
-    // random opacity & slight scale
-    el.style.opacity = (0.25 + Math.random() * 0.9).toFixed(2);
-    const scale = (0.9 + Math.random() * 0.6).toFixed(2);
-    el.style.transform = `scale(${scale})`;
+        // random initial position - use viewport units for mobile compatibility
+        const left = Math.random() * 100;  // percent
+        const top  = Math.random() * 100;  // percent
+        el.style.left = left + 'vw';
+        el.style.top  = top + 'vh';
 
-    // random animation durations & delays
-    const floatDur = 8 + Math.random() * 14; // seconds 8 - 22
-    const swayDur  = 4 + Math.random() * 8;  // seconds 4 - 12
-    const delay    = (Math.random() * 6).toFixed(2); // 0 - 6s
+        // random opacity & slight scale
+        el.style.opacity = (0.25 + Math.random() * 0.9).toFixed(2);
+        const scale = (0.9 + Math.random() * 0.6).toFixed(2);
+        el.style.transform = `scale(${scale})`;
 
-    // apply combined animations using CSS animation shorthand.
-    // We run floatY and swayX together; use separate transforms by nesting via translate on inline style for initial scale.
-    el.style.animation = `floatY ${floatDur}s ease-in-out ${delay}s infinite, swayX ${swayDur}s ease-in-out ${delay}s infinite`;
+        // random animation durations & delays
+        const floatDur = 8 + Math.random() * 14; // seconds 8 - 22
+        const swayDur  = 4 + Math.random() * 8;  // seconds 4 - 12
+        const delay    = (Math.random() * 6).toFixed(2); // 0 - 6s
 
-    // set a small random rotation to vary icons
-    const rot = (Math.random() * 40 - 20).toFixed(2);
-    el.style.transform = `scale(${scale}) rotate(${rot}deg)`;
+        // apply combined animations using CSS animation shorthand.
+        el.style.animation = `floatY ${floatDur}s ease-in-out ${delay}s infinite, swayX ${swayDur}s ease-in-out ${delay}s infinite`;
 
-    // insert Font Awesome camera icon (already included on your page)
-    el.innerHTML = `<i class="fas fa-camera" aria-hidden="true"></i>`;
+        // set a small random rotation to vary icons
+        const rot = (Math.random() * 40 - 20).toFixed(2);
+        el.style.transform = `scale(${scale}) rotate(${rot}deg)`;
 
-    container.appendChild(el);
-  }
+        // insert Font Awesome camera icon (already included on your page)
+        el.innerHTML = `<i class="fas fa-camera" aria-hidden="true"></i>`;
 
-  // Optional: gently fade the whole container in for nicer entrance
-  container.style.opacity = '0';
-  container.style.transition = 'opacity 800ms ease';
-  requestAnimationFrame(() => { container.style.opacity = '1'; });
-})();
+        container.appendChild(el);
+      }
 
+      // Optional: gently fade the whole container in for nicer entrance
+      container.style.opacity = '0';
+      container.style.transition = 'opacity 800ms ease';
+      requestAnimationFrame(() => { container.style.opacity = '1'; });
+    }
+
+    // Recreate floating cameras on window resize to ensure proper positioning
+    window.addEventListener('resize', function() {
+      createFloatingCameras();
+    });
   </script>
 </body>
 </html>
